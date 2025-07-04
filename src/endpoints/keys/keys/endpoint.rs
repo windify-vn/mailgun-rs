@@ -1,5 +1,6 @@
+use crate::endpoints::GenericResponse;
 use crate::endpoints::keys::keys::{
-    CreateKeyRequest, CreateKeyResponse, GetKeysListRequest, GetKeysListResponse,
+    CreateKeyRequest, CreateKeyResponse, DeleteKeyRequest, GetKeysListRequest, GetKeysListResponse,
 };
 use crate::framework::endpoint::{EndpointSpec, RequestBody};
 use http::Method;
@@ -35,5 +36,17 @@ impl EndpointSpec for CreateKeyRequest {
     #[inline]
     fn body(&self) -> Option<RequestBody> {
         Some(RequestBody::MultiPart(self))
+    }
+}
+
+impl EndpointSpec for DeleteKeyRequest {
+    type ResponseType = GenericResponse;
+
+    fn method(&self) -> Method {
+        Method::DELETE
+    }
+
+    fn path(&self) -> String {
+        format!("v1/keys/{}", self.key_id)
     }
 }

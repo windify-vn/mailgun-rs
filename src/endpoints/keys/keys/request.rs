@@ -70,3 +70,10 @@ impl crate::framework::endpoint::MultipartBody for CreateKeyRequest {
         parts
     }
 }
+
+#[serde_with::skip_serializing_none]
+#[derive(TypedBuilder, Serialize, Default, Debug, PartialEq, Eq, Clone)]
+pub struct DeleteKeyRequest {
+    #[builder(setter(into))]
+    pub(crate) key_id: String,
+}
