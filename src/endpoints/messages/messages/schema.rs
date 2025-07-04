@@ -87,5 +87,7 @@ pub struct Template {
 
     #[builder(default, setter(strip_option, into))]
     pub(crate) text: Option<String>,
+
+    #[builder(default, setter(strip_option, into))]
     pub(crate) variables: Option<serde_json::Value>,
 }
