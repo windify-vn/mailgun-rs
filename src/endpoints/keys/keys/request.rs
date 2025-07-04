@@ -12,8 +12,7 @@ pub struct GetKeysListRequest {
     pub(crate) kind: Option<KeyKind>,
 }
 
-#[serde_with::skip_serializing_none]
-#[derive(TypedBuilder, Serialize, Default, Debug, PartialEq, Eq, Clone)]
+#[derive(TypedBuilder, Default, Debug, PartialEq, Eq, Clone)]
 pub struct CreateKeyRequest {
     #[builder(setter(into))]
     pub(crate) role: KeyRole,
@@ -71,8 +70,7 @@ impl crate::framework::endpoint::MultipartBody for CreateKeyRequest {
     }
 }
 
-#[serde_with::skip_serializing_none]
-#[derive(TypedBuilder, Serialize, Default, Debug, PartialEq, Eq, Clone)]
+#[derive(TypedBuilder, Default, Debug, PartialEq, Eq, Clone)]
 pub struct DeleteKeyRequest {
     #[builder(setter(into))]
     pub(crate) key_id: String,

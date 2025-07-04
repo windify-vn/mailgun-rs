@@ -23,7 +23,7 @@ pub struct GetDomainListRequest {
     pub(crate) include_subaccounts: Option<bool>,
 }
 
-#[derive(TypedBuilder, Serialize, Default, Debug, PartialEq, Eq, Clone)]
+#[derive(TypedBuilder, Default, Debug, PartialEq, Eq, Clone)]
 pub struct CreateDomainRequest {
     #[builder(setter(into))]
     pub(crate) domain: String,
@@ -166,7 +166,7 @@ impl crate::framework::endpoint::MultipartBody for CreateDomainRequest {
     }
 }
 
-#[derive(TypedBuilder, Serialize, Default, Debug, PartialEq, Eq, Clone)]
+#[derive(TypedBuilder, Default, Debug, PartialEq, Eq, Clone)]
 pub struct UpdateDomainRequest {
     #[builder(setter(into))]
     pub(crate) domain: String,
@@ -250,19 +250,19 @@ impl crate::framework::endpoint::MultipartBody for UpdateDomainRequest {
     }
 }
 
-#[derive(TypedBuilder, Serialize, Default, Debug, PartialEq, Eq, Clone)]
+#[derive(TypedBuilder, Default, Debug, PartialEq, Eq, Clone)]
 pub struct VerifyDomainRequest {
     #[builder(setter(into))]
     pub(crate) domain: String,
 }
 
-#[derive(TypedBuilder, Serialize, Default, Debug, PartialEq, Eq, Clone)]
+#[derive(TypedBuilder, Default, Debug, PartialEq, Eq, Clone)]
 pub struct DeleteDomainRequest {
     #[builder(setter(into))]
     pub(crate) domain: String,
 }
 
-#[derive(TypedBuilder, Serialize, Default, Debug, PartialEq, Eq, Clone)]
+#[derive(TypedBuilder, Default, Debug, PartialEq, Eq, Clone)]
 pub struct GetDomainDmarcRequest {
     #[builder(setter(into))]
     pub(crate) domain: String,
