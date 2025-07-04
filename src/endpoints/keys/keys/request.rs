@@ -77,3 +77,6 @@ pub struct DeleteKeyRequest {
     #[builder(setter(into))]
     pub(crate) key_id: String,
 }
+
+#[derive(Default, Debug, PartialEq, Eq, Clone)]
+pub struct RegeneratePublicKeyRequest {}

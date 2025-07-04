@@ -17,3 +17,11 @@ pub struct CreateKeyResponse {
 }
 
 impl ApiResult for CreateKeyResponse {}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct RegeneratePublicKeyResponse {
+    pub key: String,
+    pub message: String,
+}
+
+impl ApiResult for RegeneratePublicKeyResponse {}
