@@ -23,12 +23,13 @@ impl fmt::Display for KeyKind {
     }
 }
 
-#[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Deserialize, Serialize, Default, Clone, PartialEq, Eq, PartialOrd, Ord)]
 #[serde(rename_all = "lowercase")]
 pub enum KeyRole {
     #[serde(rename = "")]
     Nil,
     Admin,
+    #[default]
     Basic,
     Sending,
     Support,

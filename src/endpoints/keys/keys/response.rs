@@ -9,3 +9,11 @@ pub struct GetKeysListResponse {
 }
 
 impl ApiResult for GetKeysListResponse {}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct CreateKeyResponse {
+    pub message: String,
+    pub key: KeyDetail,
+}
+
+impl ApiResult for CreateKeyResponse {}
