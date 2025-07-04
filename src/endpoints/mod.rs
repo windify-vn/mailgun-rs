@@ -11,3 +11,7 @@ pub struct GenericResponse {
 }
 
 impl ApiResult for GenericResponse {}
+
+pub fn create_dmarc_host(domain: &str) -> String {
+    format!("_dmarc.{domain}").to_lowercase()
+}

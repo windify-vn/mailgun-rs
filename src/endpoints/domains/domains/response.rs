@@ -39,3 +39,12 @@ pub struct VerifyDomainResponse {
 }
 
 impl ApiResult for VerifyDomainResponse {}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct GetDomainDmarcResponse {
+    pub entry: String,
+    pub current: String,
+    pub configured: bool,
+}
+
+impl ApiResult for GetDomainDmarcResponse {}
