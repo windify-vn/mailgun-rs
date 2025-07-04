@@ -10,7 +10,14 @@ pub enum DomainState {
     Disabled,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
+pub enum DnsRecordType {
+    MX,
+    TXT,
+    CNAME,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct DomainDetail {
     pub created_at: String,
     pub id: String,
@@ -36,11 +43,22 @@ pub struct DomainDetail {
     pub message_ttl: Option<i32>,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct DomainDisabledDetail {
     pub code: String,
     pub note: String,
     pub permanently: bool,
     pub reason: String,
     pub util: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct DomainDnsRecord {
+    pub is_active: bool,
+    pub cached: Vec<String>,
+    pub record_type: DnsRecordType,
+    pub valid: String,
+    pub value: String,
+    pub name: Option<String>,
+    pub priority: Option<String>,
 }

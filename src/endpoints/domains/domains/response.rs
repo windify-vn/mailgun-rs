@@ -1,6 +1,6 @@
-use crate::endpoints::domains::domains::DomainDetail;
+use crate::endpoints::domains::domains::{DomainDetail, DomainDnsRecord};
 use crate::framework::response::ApiResult;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize, Clone)]
 pub struct GetDomainListResponse {
@@ -9,3 +9,13 @@ pub struct GetDomainListResponse {
 }
 
 impl ApiResult for GetDomainListResponse {}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct CreateDomainResponse {
+    pub message: String,
+    pub domain: DomainDetail,
+    pub receiving_dns_records: Vec<DomainDnsRecord>,
+    pub sending_dns_records: Vec<DomainDnsRecord>,
+}
+
+impl ApiResult for CreateDomainResponse {}
