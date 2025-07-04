@@ -1,7 +1,8 @@
+#![allow(unused_imports)]
 use crate::framework::response::ApiResult;
 use serde::Deserialize;
 
-#[allow(unused_imports)]
+pub mod domains;
 pub mod messages;
 
 #[derive(Debug, Deserialize, Clone)]
