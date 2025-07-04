@@ -1,6 +1,8 @@
+use crate::endpoints::GenericResponse;
 use crate::endpoints::domains::domains::{
-    CreateDomainRequest, CreateDomainResponse, GetDomainListRequest, GetDomainListResponse,
-    UpdateDomainRequest, UpdateDomainResponse, VerifyDomainRequest, VerifyDomainResponse,
+    CreateDomainRequest, CreateDomainResponse, DeleteDomainRequest, GetDomainListRequest,
+    GetDomainListResponse, UpdateDomainRequest, UpdateDomainResponse, VerifyDomainRequest,
+    VerifyDomainResponse,
 };
 use crate::framework::endpoint::{EndpointSpec, RequestBody};
 use http::Method;
@@ -66,5 +68,17 @@ impl EndpointSpec for VerifyDomainRequest {
 
     fn path(&self) -> String {
         format!("v4/domains/{}/verify", self.domain)
+    }
+}
+
+impl EndpointSpec for DeleteDomainRequest {
+    type ResponseType = GenericResponse;
+
+    fn method(&self) -> Method {
+        Method::DELETE
+    }
+
+    fn path(&self) -> String {
+        format!("v3/domains/{}", self.domain)
     }
 }

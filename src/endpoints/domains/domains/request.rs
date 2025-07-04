@@ -255,3 +255,9 @@ pub struct VerifyDomainRequest {
     #[builder(setter(into))]
     pub(crate) domain: String,
 }
+
+#[derive(TypedBuilder, Serialize, Default, Debug, PartialEq, Eq, Clone)]
+pub struct DeleteDomainRequest {
+    #[builder(setter(into))]
+    pub(crate) domain: String,
+}
