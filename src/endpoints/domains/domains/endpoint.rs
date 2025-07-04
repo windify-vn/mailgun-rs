@@ -1,5 +1,6 @@
 use crate::endpoints::domains::domains::{
     CreateDomainRequest, CreateDomainResponse, GetDomainListRequest, GetDomainListResponse,
+    UpdateDomainRequest, UpdateDomainResponse,
 };
 use crate::framework::endpoint::{EndpointSpec, RequestBody};
 use http::Method;
@@ -31,6 +32,23 @@ impl EndpointSpec for CreateDomainRequest {
 
     fn path(&self) -> String {
         "v4/domains".into()
+    }
+
+    #[inline]
+    fn body(&self) -> Option<RequestBody> {
+        Some(RequestBody::MultiPart(self))
+    }
+}
+
+impl EndpointSpec for UpdateDomainRequest {
+    type ResponseType = UpdateDomainResponse;
+
+    fn method(&self) -> Method {
+        Method::PUT
+    }
+
+    fn path(&self) -> String {
+        format!("v4/domains/{}", self.domain)
     }
 
     #[inline]
