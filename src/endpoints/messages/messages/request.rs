@@ -4,7 +4,7 @@ use std::fs;
 use typed_builder::TypedBuilder;
 
 #[derive(TypedBuilder, Default, Debug, PartialEq, Eq, Clone)]
-pub struct SendMessageRequest {
+pub struct SendEmailRequest {
     #[builder(setter(into))]
     pub(crate) domain: String,
 
@@ -94,7 +94,7 @@ pub struct SendMessageRequest {
     pub(crate) recipient_variables: Option<serde_json::Value>,
 }
 
-impl crate::framework::endpoint::MultipartBody for SendMessageRequest {
+impl crate::framework::endpoint::MultipartBody for SendEmailRequest {
     fn parts(&self) -> Vec<(String, MultipartPart)> {
         let mut parts: Vec<(String, MultipartPart)> = vec![];
 
@@ -285,4 +285,12 @@ impl crate::framework::endpoint::MultipartBody for SendMessageRequest {
 
         parts
     }
+}
+
+#[derive(TypedBuilder, Default, Debug, PartialEq, Eq, Clone)]
+pub struct GetStoredEmailRequest {
+    #[builder(setter(into))]
+    pub(crate) key: String,
+    #[builder(setter(into))]
+    pub(crate) domain: String,
 }
