@@ -300,3 +300,9 @@ pub struct GetSendingQueueInfoRequest {
     #[builder(setter(into))]
     pub(crate) domain: String,
 }
+
+#[derive(TypedBuilder, Default, Debug, PartialEq, Eq, Clone)]
+pub struct ClearMessageQueueRequest {
+    #[builder(setter(into))]
+    pub(crate) domain: String,
+}

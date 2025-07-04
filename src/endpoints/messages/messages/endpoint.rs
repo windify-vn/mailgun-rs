@@ -1,6 +1,7 @@
+use crate::endpoints::GenericResponse;
 use crate::endpoints::messages::messages::{
-    GetSendingQueueInfoRequest, GetSendingQueueInfoResponse, GetStoredEmailRequest,
-    GetStoredEmailResponse, SendEmailRequest, SendEmailResponse,
+    ClearMessageQueueRequest, GetSendingQueueInfoRequest, GetSendingQueueInfoResponse,
+    GetStoredEmailRequest, GetStoredEmailResponse, SendEmailRequest, SendEmailResponse,
 };
 use crate::framework::endpoint::{EndpointSpec, RequestBody};
 use http::Method;
@@ -40,5 +41,17 @@ impl EndpointSpec for GetSendingQueueInfoRequest {
 
     fn path(&self) -> String {
         format!("v3/domains/{}/sending_queues", self.domain)
+    }
+}
+
+impl EndpointSpec for ClearMessageQueueRequest {
+    type ResponseType = GenericResponse;
+
+    fn method(&self) -> Method {
+        Method::DELETE
+    }
+
+    fn path(&self) -> String {
+        format!("v3/domains/{}/envelopes", self.domain)
     }
 }
