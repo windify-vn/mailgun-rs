@@ -3,6 +3,7 @@ use crate::framework::response::ApiResult;
 use serde::Deserialize;
 
 pub mod domains;
+pub mod keys;
 pub mod messages;
 
 #[derive(Debug, Deserialize, Clone)]
