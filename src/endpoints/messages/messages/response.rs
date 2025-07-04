@@ -1,8 +1,8 @@
 use crate::endpoints::messages::messages::MessageQueueInfo;
 use crate::framework::response::ApiResult;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SendEmailResponse {
     pub id: String,
     pub message: String,
@@ -10,7 +10,7 @@ pub struct SendEmailResponse {
 
 impl ApiResult for SendEmailResponse {}
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct GetStoredEmailResponse {
     #[serde(rename = "Content-Transfer-Encoding")]
     pub content_transfer_encoding: String,
@@ -52,7 +52,7 @@ pub struct GetStoredEmailResponse {
 
 impl ApiResult for GetStoredEmailResponse {}
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct GetSendingQueueInfoResponse {
     pub regular: MessageQueueInfo,
     pub scheduled: MessageQueueInfo,
