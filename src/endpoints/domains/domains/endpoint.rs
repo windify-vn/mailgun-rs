@@ -1,6 +1,6 @@
 use crate::endpoints::domains::domains::{
     CreateDomainRequest, CreateDomainResponse, GetDomainListRequest, GetDomainListResponse,
-    UpdateDomainRequest, UpdateDomainResponse,
+    UpdateDomainRequest, UpdateDomainResponse, VerifyDomainRequest, VerifyDomainResponse,
 };
 use crate::framework::endpoint::{EndpointSpec, RequestBody};
 use http::Method;
@@ -54,5 +54,17 @@ impl EndpointSpec for UpdateDomainRequest {
     #[inline]
     fn body(&self) -> Option<RequestBody> {
         Some(RequestBody::MultiPart(self))
+    }
+}
+
+impl EndpointSpec for VerifyDomainRequest {
+    type ResponseType = VerifyDomainResponse;
+
+    fn method(&self) -> Method {
+        Method::PUT
+    }
+
+    fn path(&self) -> String {
+        format!("v4/domains/{}/verify", self.domain)
     }
 }

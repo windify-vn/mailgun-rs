@@ -29,3 +29,13 @@ pub struct UpdateDomainResponse {
 }
 
 impl ApiResult for UpdateDomainResponse {}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct VerifyDomainResponse {
+    pub message: String,
+    pub domain: DomainDetail,
+    pub receiving_dns_records: Vec<DomainDnsRecord>,
+    pub sending_dns_records: Vec<DomainDnsRecord>,
+}
+
+impl ApiResult for VerifyDomainResponse {}

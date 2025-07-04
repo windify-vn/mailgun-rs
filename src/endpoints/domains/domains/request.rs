@@ -249,3 +249,9 @@ impl crate::framework::endpoint::MultipartBody for UpdateDomainRequest {
         parts
     }
 }
+
+#[derive(TypedBuilder, Serialize, Default, Debug, PartialEq, Eq, Clone)]
+pub struct VerifyDomainRequest {
+    #[builder(setter(into))]
+    pub(crate) domain: String,
+}
