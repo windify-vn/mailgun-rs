@@ -1,5 +1,6 @@
 use crate::endpoints::messages::messages::{
-    GetStoredEmailRequest, GetStoredEmailResponse, SendEmailRequest, SendEmailResponse,
+    GetSendingQueueInfoRequest, GetSendingQueueInfoResponse, GetStoredEmailRequest,
+    GetStoredEmailResponse, SendEmailRequest, SendEmailResponse,
 };
 use crate::framework::endpoint::{EndpointSpec, RequestBody};
 use http::Method;
@@ -27,5 +28,17 @@ impl EndpointSpec for GetStoredEmailRequest {
     }
     fn path(&self) -> String {
         format!("v3/domains/{}/messages/{}", self.domain, self.key)
+    }
+}
+
+impl EndpointSpec for GetSendingQueueInfoRequest {
+    type ResponseType = GetSendingQueueInfoResponse;
+
+    fn method(&self) -> Method {
+        Method::GET
+    }
+
+    fn path(&self) -> String {
+        format!("v3/domains/{}/sending_queues", self.domain)
     }
 }

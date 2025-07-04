@@ -1,3 +1,4 @@
+use crate::endpoints::messages::messages::MessageQueueInfo;
 use crate::framework::response::ApiResult;
 use serde::Deserialize;
 
@@ -50,3 +51,11 @@ pub struct GetStoredEmailResponse {
 }
 
 impl ApiResult for GetStoredEmailResponse {}
+
+#[derive(Debug, Deserialize, Clone)]
+pub struct GetSendingQueueInfoResponse {
+    pub regular: MessageQueueInfo,
+    pub scheduled: MessageQueueInfo,
+}
+
+impl ApiResult for GetSendingQueueInfoResponse {}

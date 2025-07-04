@@ -1,3 +1,4 @@
+use serde::Deserialize;
 use std::fmt;
 use std::fmt::Formatter;
 use typed_builder::TypedBuilder;
@@ -90,4 +91,16 @@ pub struct Template {
 
     #[builder(default, setter(strip_option, into))]
     pub(crate) variables: Option<serde_json::Value>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct MessageQueueInfo {
+    pub is_disabled: bool,
+    pub disable: Option<MessageQueueDisableInfo>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct MessageQueueDisableInfo {
+    pub until: String,
+    pub reason: String,
 }
