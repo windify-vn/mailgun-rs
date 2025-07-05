@@ -2,8 +2,11 @@ use core::fmt;
 use serde::{Deserialize, Serialize};
 use std::fmt::Formatter;
 
-#[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(
+    Debug, Deserialize, Serialize, Clone, PartialEq, Eq, PartialOrd, Ord, strum_macros::AsRefStr,
+)]
 #[serde(rename_all = "lowercase")]
+#[strum(serialize_all = "lowercase")]
 pub enum KeyKind {
     Domain,
     User,
@@ -11,22 +14,23 @@ pub enum KeyKind {
     Public,
 }
 
-impl fmt::Display for KeyKind {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        let s = match self {
-            KeyKind::Domain => "domain",
-            KeyKind::User => "user",
-            KeyKind::Web => "web",
-            KeyKind::Public => "public",
-        };
-        write!(f, "{s}")
-    }
-}
-
-#[derive(Debug, Deserialize, Serialize, Default, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(
+    Debug,
+    Deserialize,
+    Serialize,
+    Default,
+    Clone,
+    PartialEq,
+    Eq,
+    PartialOrd,
+    Ord,
+    strum_macros::AsRefStr,
+)]
 #[serde(rename_all = "lowercase")]
+#[strum(serialize_all = "lowercase")]
 pub enum KeyRole {
     #[serde(rename = "")]
+    #[strum(serialize = "")]
     Nil,
     Admin,
     #[default]
@@ -35,21 +39,6 @@ pub enum KeyRole {
     Support,
     Developer,
 }
-
-impl fmt::Display for KeyRole {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        let s = match self {
-            KeyRole::Nil => "",
-            KeyRole::Admin => "admin",
-            KeyRole::Basic => "basic",
-            KeyRole::Sending => "sending",
-            KeyRole::Support => "support",
-            KeyRole::Developer => "developer",
-        };
-        write!(f, "{s}")
-    }
-}
-
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct KeyDetail {
     pub id: String,

@@ -36,7 +36,10 @@ impl crate::framework::endpoint::MultipartBody for CreateKeyRequest {
     fn parts(&self) -> Vec<(String, MultipartPart)> {
         let mut parts: Vec<(String, MultipartPart)> = vec![];
 
-        parts.push(("role".into(), MultipartPart::Text(self.role.to_string())));
+        parts.push((
+            "role".into(),
+            MultipartPart::Text(self.role.as_ref().to_string()),
+        ));
 
         if let Some(value) = &self.email {
             parts.push(("email".into(), MultipartPart::Text(value.into())));
@@ -47,7 +50,10 @@ impl crate::framework::endpoint::MultipartBody for CreateKeyRequest {
         }
 
         if let Some(value) = &self.kind {
-            parts.push(("kind".into(), MultipartPart::Text(value.to_string())));
+            parts.push((
+                "kind".into(),
+                MultipartPart::Text(value.as_ref().to_string()),
+            ));
         }
 
         if let Some(value) = &self.expiration {
