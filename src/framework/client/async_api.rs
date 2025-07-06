@@ -45,6 +45,18 @@ impl Client {
             http_client,
         })
     }
+    
+    pub fn new_with_client(
+        client: reqwest::Client,
+        credentials: Credentials,
+        region: MailgunRegion,
+    ) -> Client {
+        Client {
+            region,
+            credentials,
+            http_client: client,
+        }
+    }
 
     /// Issue an API request of the given type.
     pub async fn request<Endpoint>(

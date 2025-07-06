@@ -5,6 +5,7 @@ use crate::framework::endpoint::{EndpointSpec, MultipartPart, RequestBody};
 use crate::framework::response::{ApiErrors, ApiFailure, ApiResponse};
 use std::borrow::Cow;
 use std::net::SocketAddr;
+use crate::framework::client::async_api::Client;
 
 pub struct HttpApiClient {
     region: MailgunRegion,
@@ -36,6 +37,18 @@ impl HttpApiClient {
             credentials,
             http_client,
         })
+    }
+
+    pub fn new_with_client(
+        client: reqwest::blocking::Client,
+        credentials: Credentials,
+        region: MailgunRegion,
+    ) -> Client {
+        Client {
+            region,
+            credentials,
+            http_client: client,
+        }
     }
 
     pub fn request<Endpoint>(&self, endpoint: &Endpoint) -> ApiResponse<Endpoint::ResponseType>
