@@ -5,8 +5,8 @@ use typed_builder::TypedBuilder;
 
 #[derive(TypedBuilder, Debug, PartialEq, Eq, Clone)]
 pub struct EmailAddress {
-    name: Option<String>,
-    address: String,
+    pub name: Option<String>,
+    pub address: String,
 }
 
 impl EmailAddress {
