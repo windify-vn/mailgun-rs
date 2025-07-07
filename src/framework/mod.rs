@@ -1,6 +1,3 @@
-/*!
-This module controls how requests are sent to Cloudflare's API, and how responses are parsed from it.
- */
 pub mod auth;
 pub mod client;
 pub mod endpoint;
@@ -9,7 +6,7 @@ pub mod response;
 #[derive(thiserror::Error, Debug)]
 pub enum Error {
     /// An error via the `reqwest` crate
-    #[error("Reqwest returned an error when connecting to the Cloudflare API: {0}")]
+    #[error("Reqwest returned an error when connecting to the Mailgun API: {0}")]
     ReqwestError(#[from] reqwest::Error),
 }
 
