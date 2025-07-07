@@ -43,8 +43,8 @@ impl HttpApiClient {
         client: reqwest::blocking::Client,
         credentials: Credentials,
         region: MailgunRegion,
-    ) -> Client {
-        Client {
+    ) -> HttpApiClient {
+        HttpApiClient {
             region,
             credentials,
             http_client: client,
